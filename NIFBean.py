@@ -10,6 +10,7 @@ class NIFBean(object):
         self._taClassRef = None
         self._referenceContext = None
         self._taMsClassRef = None
+        self._dependencyRelationType = None
 
     @property
     def taMsClassRef(self):
@@ -159,6 +160,23 @@ class NIFBean(object):
     def referenceContext(self):
         del self._referenceContext
 
+
+    @property
+    def dependencyRelationType(self):
+        if self._dependencyRelationType is not None:
+            return 'nif:bdependencyRelationType          "' + str(self._dependencyRelationType) + '\n\t'
+        return ''
+
+    @dependencyRelationType.setter
+    def dependencyRelationType(self, value):
+        self._dependencyRelationType = value
+
+    @dependencyRelationType.deleter
+    def dependencyRelationType(self):
+        del self._dependencyRelationType
+
+
+
     @property
     def reference(self):
         return self._taIdentRef + '/#offset_' + str(self._beginIndex) + '_' + str(self._endIndex)
@@ -193,4 +211,5 @@ class NIFBean(object):
                 self.annotator + \
                 self.toClassRef +\
                 self.score + \
-                self.taIdentRef
+                self.taIdentRef + \
+                self.dependencyRelationType

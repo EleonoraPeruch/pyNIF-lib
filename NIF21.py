@@ -15,7 +15,7 @@ class NIF21():
         self._obj_context.endIndex = endIndex
         self._obj_context.mention = mention
 
-    def bean(self, mention, beginIndex, endIndex, taClassRef, score, annotator, taIdentRef, taMsClassRef):
+    def bean(self, mention, beginIndex, endIndex, taClassRef, score, annotator, taIdentRef, taMsClassRef, dependencyRelationType):
         bean = NIFBean.NIFBean()
         bean.referenceContext = self._obj_context.referenceContext
         bean.context = self._obj_context.baseURI
@@ -27,6 +27,7 @@ class NIF21():
         bean.annotator = annotator
         bean.taIdentRef = taIdentRef
         bean.taMsClassRef = taMsClassRef
+        bean.dependencyRelationType = dependencyRelationType
         self._obj_beans.append(bean)
 
     def turtle(self):
